@@ -14,4 +14,8 @@ public class BluetoothUtil {
         ZjmUtil.Log(context,msg);
     }
 
+    public void test(){
+
+    }
+
 }
