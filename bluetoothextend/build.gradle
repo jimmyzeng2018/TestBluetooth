@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    publish {
+        userOrg = 'jimmy2018'//bintray.com用户名
+        groupId = 'com.jimmy'//jcenter上的路径
+        artifactId = 'bluetoothextend'//项目名称
+        publishVersion = '1.0.6'//版本号
+        desc = 'this is for bluetooth'//描述，不重要
+        website = 'https://126.com'//网站，最好有，不重要
+    }
+    //gradlew clean build bintrayUpload -PbintrayUser=jimmy2018 -PbintrayKey=8d41106b29acc48fe91f0cab5c98e1d009e88695  -PdryRun=false
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
